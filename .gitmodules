@@ -22,3 +22,6 @@
 [submodule "gdanimate"]
 	path = addons/gdanimate
 	url = https://github.com/cherrythecool/gdanimate
+[submodule "addons/rubicon_extra_aditions"]
+	path = addons/rubicon_extra_aditions
+	url = https://github.com/Crimsickle/rubicon_extra_additions.git
