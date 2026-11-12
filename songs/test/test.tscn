@@ -84,11 +84,13 @@ stream = ExtResource("7_um27r")
 bus = &"Music"
 
 [node name="Stage" parent="." unique_id=52964114 instance=ExtResource("9_1qbvm")]
+position = Vector2(-54, -28)
 
 [node name="Bf" parent="Stage" unique_id=32254497 node_paths=PackedStringArray("level_note_controller") instance=ExtResource("10_tweun")]
 position = Vector2(1388, 869)
 level_note_controller = NodePath("../../UILayer/UI/Player")
 singing_step_time_value = 0.5
+_dancing_animations = Array[StringName]([&"dance_idle"])
 transition_update_queued_animations = true
 
 [node name="BfOpponent" parent="Stage" unique_id=753393350 node_paths=PackedStringArray("level_note_controller") instance=ExtResource("10_tweun")]
@@ -97,6 +99,7 @@ rotation = 3.1415925
 scale = Vector2(1, -1)
 level_note_controller = NodePath("../../UILayer/UI/Opponent")
 singing_step_time_value = 0.5
+_dancing_animations = Array[StringName]([&"dance_idle"])
 animations = Dictionary[StringName, StringName]({
 &"miss_down": &"sing_down",
 &"miss_left": &"miss_right",
@@ -131,6 +134,7 @@ point_map = {
 &"Opponent": NodePath("../../OpponentCameraPoint"),
 &"Player": NodePath("../../PlayerCameraPoint")
 }
+_current_point = &"Opponent"
 metadata/_custom_type_script = "uid://dk0ffxu4bdk3c"
 
 [node name="RubiconCameraBumper" type="Node" parent="RubiconInterpolatedCamera2D" unique_id=1339474565]
@@ -163,6 +167,7 @@ health_module = NodePath("../../../../RubiconHealthModule")
 
 [node name="HealthIconBumper" parent="UILayer/UI/FunkinHUD/HealthBar" index="0" unique_id=1753206126 node_paths=PackedStringArray("rubicon_level")]
 rubicon_level = NodePath("../../../../..")
+_icons_base_scale = Array[Vector2]([])
 
 [node name="GroupFirst" parent="UILayer/UI/FunkinHUD/HealthBar/Path2D/PathFollow2D" parent_id_path=PackedInt32Array(814096794, 2000574413, 1230556197) index="0" unique_id=1136049132]
 scale = Vector2(1.0000001, 1.0000001)
@@ -215,6 +220,7 @@ layout_mode = 1
 offset_left = 80.0
 offset_right = 80.0
 lane_id = 2
+lane_state = 2
 
 [node name="Lane4" parent="UILayer/UI/Opponent" unique_id=2014267552 instance=ExtResource("20_y6wax")]
 layout_mode = 1
