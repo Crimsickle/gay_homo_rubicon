@@ -8,9 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://c47s5rt0vjh0q" path="res://songs/test/resources/Inst.ogg" id="6_0cyru"]
 [ext_resource type="AudioStream" uid="uid://i1jw6ewumun6" path="res://songs/test/resources/Vocals.ogg" id="7_um27r"]
 [ext_resource type="Script" uid="uid://cl7qcepwh0ty5" path="res://addons/rubicon/scripts/scene/game/rubicon_level_song.gd" id="8_67mca"]
-[ext_resource type="Script" uid="uid://dqu0sleb7a2r0" path="res://addons/rubicon_extra_aditions/additions/countdown/countdown_class.gd" id="9_0ktul"]
+[ext_resource type="Script" uid="uid://dqu0sleb7a2r0" path="res://addons/rubicon_extra_aditions/classes/countdown/countdown_class.gd" id="9_0ktul"]
 [ext_resource type="PackedScene" uid="uid://do2qvv4wl764d" path="res://resources/levels/maps/fnf_stage.tscn" id="9_1qbvm"]
 [ext_resource type="PackedScene" uid="uid://c6prfk6mwjxpe" path="res://resources/levels/characters/bf.tscn" id="10_tweun"]
+[ext_resource type="Script" uid="uid://dvp2d0075nwe0" path="res://addons/rubicon_extra_aditions/classes/settings/rubicon_level_setting_applier.gd" id="10_xla0l"]
 [ext_resource type="Script" uid="uid://bk8alxtg2qxnl" path="res://addons/rubicon_extras/scripts/camera/rubicon_interpolated_camera_2d.gd" id="11_thb4w"]
 [ext_resource type="Script" uid="uid://dk0ffxu4bdk3c" path="res://addons/rubicon_extras/scripts/camera/rubicon_position_setter.gd" id="12_k7grs"]
 [ext_resource type="Script" uid="uid://bcy0fvr2gilvq" path="res://addons/rubicon_extras/scripts/camera/rubicon_camera_bumper.gd" id="13_euuo4"]
@@ -51,27 +52,9 @@ tracks/0/keys = {
 "values": [&"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player"]
 }
 
-[sub_resource type="Animation" id="Animation_0ktul"]
-resource_name = "scene"
-length = 102.468
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../RubiconInterpolatedCamera2D/RubiconPositionSetter:current_point")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.2, 6.4, 9.6, 12.8, 14.4, 16, 17.6, 19.2, 20.8, 22.400002, 24, 25.6, 28.800001, 32, 35.2, 38.4, 41.6, 44.800003, 48, 51.2, 54.4, 57.600002, 60.8, 64, 67.2, 70.40001, 73.59999, 76.799995, 79.99999, 83.19999, 86.39999, 89.59999, 92.79999, 96, 99.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [&"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player", &"Opponent", &"Player"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qunsj"]
 _data = {
-&"scene": SubResource("Animation_hmr2h"),
-&"scene (2)": SubResource("Animation_0ktul")
+&"scene": SubResource("Animation_hmr2h")
 }
 
 [node name="Test" type="Node2D" unique_id=1207632882]
@@ -104,7 +87,11 @@ bus = &"Music"
 [node name="RubiconLevelCountdown" type="Node" parent="." unique_id=531789018]
 script = ExtResource("9_0ktul")
 animation_name = "scene"
-metadata/_custom_type_script = "uid://dqu0sleb7a2r0"
+
+[node name="RubiconLevelSettingApplier" type="Node" parent="." unique_id=352839475 node_paths=PackedStringArray("note_controllers")]
+script = ExtResource("10_xla0l")
+note_controllers = [NodePath("../UILayer/UI/Player")]
+metadata/_custom_type_script = "uid://dvp2d0075nwe0"
 
 [node name="Stage" parent="." unique_id=52964114 instance=ExtResource("9_1qbvm")]
 position = Vector2(-54, -28)
@@ -243,7 +230,6 @@ layout_mode = 1
 offset_left = 80.0
 offset_right = 80.0
 lane_id = 2
-lane_state = 2
 
 [node name="Lane4" parent="UILayer/UI/Opponent" unique_id=2014267552 instance=ExtResource("20_y6wax")]
 layout_mode = 1
@@ -283,6 +269,7 @@ layout_mode = 1
 offset_left = -80.0
 offset_right = -80.0
 lane_id = 1
+lane_state = 2
 
 [node name="FunkinNoteSplash" parent="UILayer/UI/Player/Lane2" unique_id=75186017 instance=ExtResource("22_4way8")]
 layout_mode = 1

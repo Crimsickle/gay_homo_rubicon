@@ -23,6 +23,10 @@ config/icon="uid://dlxowoyf4wnti"
 
 buses/default_bus_layout="uid://dg07spmwy57em"
 
+[autoload]
+
+SettingsGlobal="*uid://dfgbd4rmaf3cx"
+
 [display]
 
 window/size/viewport_width=1920
