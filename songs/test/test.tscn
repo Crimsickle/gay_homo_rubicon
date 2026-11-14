@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://b248dinmb0vlb" path="res://resources/levels/ui/funkin/funkin_note_override.tres" id="22_0ktul"]
 [ext_resource type="PackedScene" uid="uid://dslpk7i6qqjdl" path="res://resources/levels/ui/funkin/components/funkin_note_splash.tscn" id="22_4way8"]
 [ext_resource type="Resource" uid="uid://csifqf5pyurw8" path="res://songs/test/data/test_Player.tres" id="22_7o1jy"]
+[ext_resource type="PackedScene" uid="uid://cfh6reo1jiicq" path="res://addons/rubicon_extra_aditions/defaults/pause_menu/pause_menu.tscn" id="25_y6wax"]
 
 [sub_resource type="Resource" id="Resource_pwsoq"]
 script = ExtResource("4_gd4mu")
@@ -93,6 +94,13 @@ script = ExtResource("10_xla0l")
 note_controllers = [NodePath("../UILayer/UI/Player")]
 metadata/_custom_type_script = "uid://dvp2d0075nwe0"
 
+[node name="RubiconHealthModule" type="Node" parent="." unique_id=2053710346 node_paths=PackedStringArray("note_controller")]
+script = ExtResource("14_igsps")
+note_controller = NodePath("../UILayer/UI/Player")
+starting_health = 50.0
+starting_health = 50.0
+metadata/_custom_type_script = "uid://dl1v7li3unik0"
+
 [node name="Stage" parent="." unique_id=52964114 instance=ExtResource("9_1qbvm")]
 position = Vector2(-54, -28)
 
@@ -144,19 +152,11 @@ point_map = {
 &"Opponent": NodePath("../../OpponentCameraPoint"),
 &"Player": NodePath("../../PlayerCameraPoint")
 }
-_current_point = &"Opponent"
 metadata/_custom_type_script = "uid://dk0ffxu4bdk3c"
 
 [node name="RubiconCameraBumper" type="Node" parent="RubiconInterpolatedCamera2D" unique_id=1339474565]
 script = ExtResource("13_euuo4")
 metadata/_custom_type_script = "uid://bcy0fvr2gilvq"
-
-[node name="RubiconHealthModule" type="Node" parent="." unique_id=2053710346 node_paths=PackedStringArray("note_controller")]
-script = ExtResource("14_igsps")
-note_controller = NodePath("../UILayer/UI/Player")
-starting_health = 50.0
-starting_health = 50.0
-metadata/_custom_type_script = "uid://dl1v7li3unik0"
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=2086294426]
 
@@ -303,6 +303,9 @@ splash_animations = Dictionary[StringName, StringName]({
 &"splash_animation_0": &"splash_right_1",
 &"splash_animation_1": &"splash_right_2"
 })
+
+[node name="PauseMenu" parent="." unique_id=285936990 instance=ExtResource("25_y6wax")]
+visible = false
 
 [editable path="UILayer/UI/FunkinHUD"]
 [editable path="UILayer/UI/FunkinHUD/HealthBar"]

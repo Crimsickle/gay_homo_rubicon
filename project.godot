@@ -45,6 +45,12 @@ project/assembly_name="Rubicon Engine- Friday Night Funkin-"
 
 enabled=PackedStringArray("res://addons/rubichart_converter/plugin.cfg", "res://addons/rubicon/plugin.cfg", "res://addons/rubicon_extra_aditions/plugin.cfg", "res://addons/sprite_importer/plugin.cfg", "res://addons/spriteframes_keyframer/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/rubicon_extra_aditions/": "red"
+}
+
 [rubicon]
 
 defaults/note_database="uid://bvhsfvptfwijt"
